@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internxt</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div class="menu-lateral">
+        <h2>Internxt</h2>
+        <ul>
+            <li>Inicio</li>
+            <li><b>Mi Drive</b></li>
+            <li>Compartidos</li>
+            <li>Papelera</li>
+            <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="zona-principal">
+        
+        <div class="barra-superior">
+            <button id="btn-menu" class="btn-hamburguesa">☰</button>
+            
+            <input type="text" placeholder="Buscar..." class="buscador">
+            
+            <div class="acciones">
+                <button id="btn-modo-oscuro">Modo oscuro</button>
+
+                <input type="file" id="entrada-archivo" multiple>
+                <button id="boton-subir">Subir archivo</button>
+                
+                <button id="boton-perfil">Perfil</button>
+                <div id="desplegable-perfil" class="oculto">
+                    <p>Mi perfil</p>
+                    <p>Cerrar sesion</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenido">
+            <h1>Mi Drive</h1>
+            
+            <div class="botones-vista">
+                <select id="filtro" class="filtro">
+                    <option value="defecto">Ordenar por...</option>
+                    <option value="nombre">Nombre (A - Z)</option>
+                    <option value="fecha">Fecha (Más recientes)</option>
+                    <option value="tamaño">Tamaño (Mayor a menor)</option>
+                </select>
+
+                <button id="btn-alternar-vista">Cambiar a Vista Lista</button>
+            </div>
+
+            <div id="caja-archivos" class="vista-cuadricula"> </div>
+        </div>
+    </div>
+    <div id="modal-preview" class="oculto">
+        <span id="cerrar-modal">✖</span>
+        <img id="imagen-modal" alt="Vista previa">
+    </div>
+
+    <script src="js/logica.js"></script>
+</body>
+</html>

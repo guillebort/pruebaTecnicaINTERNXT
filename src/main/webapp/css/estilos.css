@@ -1,0 +1,228 @@
+/* ESTILOS  GENERALES */
+body { 
+    display: flex; 
+    margin: 0; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    height: 100vh; 
+    overflow: hidden; 
+    background-color: #f4f7f6; 
+    color: #333;
+}
+
+/* botones genericos */
+button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #e9ecef;
+    font-size: 14px;
+}
+button:hover { background: #dde2e6; }
+
+/* boton para subir archivos */
+#boton-subir {
+    background: #0066ff; 
+    color: white;
+    font-weight: bold;
+}
+#boton-subir:hover { background: #005ce6; }
+
+#entrada-archivo {
+    display: none;
+}
+
+/* menu lateral*/
+.menu-lateral { 
+    position: fixed;
+    top: 0; bottom: 0; left: -250px;
+    width: 220px; 
+    background: #ffffff; 
+    padding: 20px; 
+    border-right: 1px solid #eaeaea; 
+    transition: left 0.3s;
+    z-index: 1000;
+}
+.menu-lateral.abierto { left: 0; }
+.menu-lateral h2 { color: #0066ff; margin-bottom: 30px;}
+.menu-lateral ul { list-style: none; padding: 0; }
+.menu-lateral li { 
+    margin-bottom: 5px; 
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer; 
+}
+.menu-lateral li:hover { background: #f0f4f8; color: #0066ff; }
+.menu-lateral b { color: #0066ff; } 
+
+.btn-hamburguesa { display: block; background: transparent; font-size: 24px; padding: 0 15px 0 0; }
+
+/* zona principal y bara superior */
+.zona-principal { flex: 1; display: flex; flex-direction: column; width: 100%; }
+
+.barra-superior { 
+    display: flex; 
+    align-items: center; 
+    padding: 15px 25px; 
+    background: #ffffff; 
+    border-bottom: 1px solid #eaeaea; 
+}
+
+.buscador {
+    flex: 1;
+    max-width: 250px;
+    margin-right: auto;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px; 
+    outline: none;
+}
+.buscador:focus { border-color: #0066ff; }
+
+.acciones { display: flex; gap: 10px; position: relative; }
+
+/* menu perfil */
+.oculto { display: none !important; }
+#desplegable-perfil { 
+    position: absolute; 
+    right: 0; 
+    top: 45px; 
+    background: white; 
+    border: 1px solid #eaeaea; 
+    border-radius: 8px;
+    padding: 10px; 
+    z-index: 10;
+    min-width: 120px;
+}
+#desplegable-perfil p { margin: 5px 0; padding: 8px; cursor: pointer; border-radius: 4px; }
+#desplegable-perfil p:hover { background: #f4f7f6; }
+
+/* zona archivos*/
+.contenido { padding: 30px; overflow-y: auto; flex: 1; }
+.contenido h1 { margin-top: 0; font-size: 24px; }
+.botones-vista { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; }
+
+/* vista cuadricula*/
+.vista-cuadricula { display: flex; flex-wrap: wrap; gap: 15px; }
+.vista-cuadricula .archivo { 
+    background: #ffffff;
+    border: 1px solid #eaeaea; 
+    border-radius: 10px; 
+    padding: 20px 15px; 
+    width: 150px; 
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px; 
+    cursor: pointer;
+}
+.vista-cuadricula .archivo:hover { border-color: #0066ff; }
+
+.vista-cuadricula .datos-basicos { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.vista-cuadricula .datos-basicos span:first-child { font-size: 32px; }
+.vista-cuadricula .datos-basicos span:last-child { font-size: 14px; font-weight: bold; word-break: break-all; }
+.vista-cuadricula .detalles { display: flex; justify-content: center; gap: 10px; font-size: 12px; color: #777; }
+
+.vista-cuadricula .btn-eliminar { 
+    background: #ffeeee; 
+    color: #cc0000; 
+    width: 100%; 
+    margin: 0; 
+    padding: 8px; 
+    border-radius: 6px;
+}
+.vista-cuadricula .btn-eliminar:hover { background: #ffcccc; }
+
+/* vista lista*/
+.vista-lista { display: flex; flex-direction: column; gap: 8px; }
+.vista-lista .archivo { 
+    background: #ffffff;
+    border: 1px solid #eaeaea; 
+    border-radius: 8px; 
+    padding: 12px 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    cursor: pointer;
+}
+.vista-lista .archivo:hover { border-color: #0066ff; }
+
+.vista-lista .datos-basicos { display: flex; align-items: center; gap: 15px; width: 30%; font-weight: bold;}
+.vista-lista .datos-basicos span:first-child { font-size: 16px; }
+.vista-lista .detalles { display: flex; gap: 30px; font-size: 13px; color: #777; width: 40%; justify-content: center;}
+
+.vista-lista .btn-eliminar { color: #cc0000; margin: 0; font-size: 13px; padding: 5px 10px; background: transparent; }
+.vista-lista .btn-eliminar:hover { background: #ffeeee; }
+
+
+@media (min-width: 768px) {
+    .btn-hamburguesa { display: none; }
+    .menu-lateral { position: static; left: 0; }
+}
+
+/*modo oscuro*/
+body.modo-oscuro { background-color: #121212; color: #e0e0e0; }
+
+body.modo-oscuro .menu-lateral,
+body.modo-oscuro .barra-superior,
+body.modo-oscuro .archivo,
+body.modo-oscuro #desplegable-perfil { background-color: #1e1e1e; border-color: #333333; }
+
+body.modo-oscuro .buscador { background-color: #121212; color: #fff; border-color: #333; }
+body.modo-oscuro button { background: #333; color: #fff; }
+body.modo-oscuro button:hover { background: #444; }
+body.modo-oscuro #boton-subir { background: #005ce6; }
+
+body.modo-oscuro .menu-lateral li:hover,
+body.modo-oscuro #desplegable-perfil p:hover { background: #2a2a2a; }
+
+body.modo-oscuro .detalles { color: #aaaaaa; }
+body.modo-oscuro .vista-cuadricula .btn-eliminar { background: #331111; color: #ff6666; }
+body.modo-oscuro .vista-cuadricula .btn-eliminar:hover { background: #441111; }
+
+/*Drag & Drop*/
+.contenido.arrastrando {
+    background-color: #e6f2ff; 
+    border: 2px dashed #0066ff; 
+}
+body.modo-oscuro .contenido.arrastrando {
+    background-color: #1a2a3a; 
+    border-color: #3399ff;
+}
+
+/*filtro archivos*/
+.filtro {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+body.modo-oscuro .filtro { background: #333; color: #fff; border-color: #555; }
+
+/*modal de vista previa*/
+#modal-preview {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); 
+    z-index: 2000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#modal-preview img {
+    max-width: 90%; 
+    max-height: 90%;
+    border-radius: 8px;
+}
+#cerrar-modal {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: white; 
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
